@@ -19,8 +19,8 @@ class Emp {
 	private double comm;
 	private int deptno;
 
+
 	public Emp(int empno, String ename, String job, int mgr, String hiredate, double sal, double comm, int deptno) {
-		super();
 		this.empno = empno;
 		this.ename = ename;
 		this.job = job;
@@ -35,65 +35,81 @@ class Emp {
 		return empno;
 	}
 
+
 	public void setEmpno(int empno) {
 		this.empno = empno;
 	}
+
 
 	public String getEname() {
 		return ename;
 	}
 
+
 	public void setEname(String ename) {
 		this.ename = ename;
 	}
+
 
 	public String getJob() {
 		return job;
 	}
 
+
 	public void setJob(String job) {
 		this.job = job;
 	}
+
 
 	public int getMgr() {
 		return mgr;
 	}
 
+
 	public void setMgr(int mgr) {
 		this.mgr = mgr;
 	}
+
 
 	public String getHiredate() {
 		return hiredate;
 	}
 
+
 	public void setHiredate(String hiredate) {
 		this.hiredate = hiredate;
 	}
+
 
 	public double getSal() {
 		return sal;
 	}
 
+
 	public void setSal(double sal) {
 		this.sal = sal;
 	}
+
 
 	public double getComm() {
 		return comm;
 	}
 
+
 	public void setComm(double comm) {
 		this.comm = comm;
 	}
+
 
 	public int getDeptno() {
 		return deptno;
 	}
 
+
 	public void setDeptno(int deptno) {
 		this.deptno = deptno;
 	}
+
 
 	@Override
 	public String toString() {
@@ -235,7 +251,8 @@ public class EmpData implements DBOperations {
 	}
 
 	public static void main(String[] args) {
-		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {			
+			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			DBOperations empData = new EmpData();
 			Scanner scanner = new Scanner(System.in);
 			boolean exit = false;
@@ -269,7 +286,7 @@ public class EmpData implements DBOperations {
 					break;
 				}
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("DB 연결 중 오류가 발생했습니다");
 		}
